@@ -22,7 +22,6 @@ The frontends showcase how the same API can be integrated into different framewo
 - TensorFlow + Scikit-learn training scripts included
 - Modular backend with scripts for data generation and training
 - Static file hosting for web-based clients
-- Environment-based configuration via `.env`
 
 ✅ **Frontend Implementations**
 
