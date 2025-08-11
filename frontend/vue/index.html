@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+  <title>Tic-Tac-Toe Game: Vue.js Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <h1>Tic-Tac-Toe Game: Vue.js Demo</h1>
+  <div id="app" v-cloak>
+    <div id="game-container">
+      <div class="gameboard">
+        <div v-for="(row, rowIndex) in boardData" class="row" :key="rowIndex">
+          <div
+            v-for="(cell, colIndex) in row"
+            class="cell"
+            :key="colIndex"
+            @click="handleCellClick(rowIndex, colIndex)"
+            :class="{ 'x-symbol': cell === 'X', 'o-symbol': cell === 'O' }"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <div class="options-panel">
+      <label>Difficulty: </label>
+      <select
+        id="difficulty_level"
+        v-model="difficultyLevel"
+        :disabled="isLoading"
+      >
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+      <button
+        id="reset-game"
+        @click="handleResetGameClick"
+        :disabled="isLoading"
+      >
+        Reset Game
+      </button>
+    </div>
+    <div id="loading-overlay" v-if="isLoading">
+      <div class="spinner"></div>
+    </div>
+    <div id="game-message-modal" v-if="isModalVisible">
+      <div class="modal-content">
+        <p id="game-message-text">{{ modalMessage }}</p>
+        <button id="modal-close-button" @click="handleModalClose">Close</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
